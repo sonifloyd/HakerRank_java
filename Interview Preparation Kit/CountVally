@@ -1,0 +1,36 @@
+
+We need to count the number of valleys during the hike:
+
+A valley starts when you go below sea level (altitude < 0) and ends when you return to sea level.
+
+
+
+public static int countingValleys(int steps, String path) {
+    int seaLevel = 0;
+    int altitude = 0;
+    int valleys = 0;
+    
+    for (char step : path.toCharArray()) {
+        if (step == 'U') {
+            altitude++;
+            if (altitude == 0) {
+                valleys++; // came up to sea level, so a valley is completed
+            }
+        } else if (step == 'D') {
+            altitude--;
+        }
+    }
+    
+    return valleys;
+}
+
+
+8
+UDDDUDUU
+1
+
+✅ Time Complexity
+O(n) where n is the number of steps — iterate once through the string.
+
+✅ Space Complexity
+O(1) — only a few integer variables are used
