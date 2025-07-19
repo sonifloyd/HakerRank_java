@@ -1,0 +1,50 @@
+Understanding the Problem
+You are given an array of clouds:
+
+0 → Safe cloud (cumulus).
+
+1 → Unsafe cloud (thunderhead).
+
+You start from index 0 and want to reach the last cloud (n-1).
+
+At each move, you can jump:
+
+1 step forward, or
+
+2 steps forward.
+
+You cannot land on an unsafe cloud (1).
+
+You need to find the minimum number of jumps needed to reach the last cloud.
+
+It is always guaranteed that there is at least one safe path.
+
+
+-----------------------------------------
+import java.util.*;
+
+public class Solution {
+
+    public static int jumpingOnClouds(List<Integer> c) {
+        int jumps = 0;
+        int position = 0;
+        int n = c.size();
+
+        while (position < n - 1) {
+            if (position + 2 < n && c.get(position + 2) == 0) {
+                position += 2;
+            } else {
+                position += 1;
+            }
+            jumps++;
+        }
+
+        return jumps;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> clouds = Arrays.asList(0, 0, 1, 0, 0, 1, 0);
+        int result = jumpingOnClouds(clouds);
+        System.out.println(result); // Output: 4
+    }
+}
