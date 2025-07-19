@@ -1,0 +1,42 @@
+Here's the complete sockMerchant function that counts the number of pairs of socks by color:
+
+
+public static int sockMerchant(int n, List<Integer> ar) {
+    Map<Integer, Integer> colorCount = new HashMap<>();
+    int pairs = 0;
+    
+    for (int color : ar) {
+        colorCount.put(color, colorCount.getOrDefault(color, 0) + 1);
+    }
+    
+    for (int count : colorCount.values()) {
+        pairs += count / 2;
+    }
+    
+    return pairs;
+}
+
+List<Integer> ar = Arrays.asList(10, 20, 20, 10, 10, 30, 50, 10, 20);
+int result = sockMerchant(ar.size(), ar);
+System.out.println(result); // Output: 3
+
+TC- o(n)
+Sc-O(n)
+
+------------------- Using set ------------
+public static int sockMerchant(int n, List<Integer> ar) {
+    Set<Integer> unmatched = new HashSet<>();
+    int pairs = 0;
+    
+    for (int color : ar) {
+        if (unmatched.contains(color)) {
+            pairs++;
+            unmatched.remove(color);
+        } else {
+            unmatched.add(color);
+        }
+    }
+    
+    return pairs;
+}
+
