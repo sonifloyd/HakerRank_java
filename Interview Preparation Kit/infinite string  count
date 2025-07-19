@@ -1,0 +1,43 @@
+s = "aba"
+n = 10
+The infinite string would be:
+
+abaabaabaa
+We count how many 'a' appear → 7 times.
+
+
+------------------------- -------- -----
+public static long repeatedString(String s, long n) {
+    long countOfA = 0;
+
+    // Count 'a' in the given string s
+    for (char c : s.toCharArray()) {
+        if (c == 'a') {
+            countOfA++;
+        }
+    }
+
+    long fullRepeats = n / s.length();
+    long remainder = n % s.length();
+
+    long totalA = fullRepeats * countOfA;
+
+    // Count 'a' in the remainder substring
+    for (int i = 0; i < remainder; i++) {
+        if (s.charAt(i) == 'a') {
+            totalA++;
+        }
+    }
+
+    return totalA;
+}
+
+ Time Complexity
+O(s.length), because:
+
+First loop to count 'a' in s.
+
+Second loop for remainder (max up to s.length).
+
+✅ Space Complexity
+O(1), only counters are used.
