@@ -1,0 +1,39 @@
+
+
+
+arr[i][j]     arr[i][j+1]     arr[i][j+2]
+               arr[i+1][j+1]
+arr[i+2][j]   arr[i+2][j+1]   arr[i+2][j+2]
+
+
+
+--- 
+
+public static int hourglassSum(List<List<Integer>> arr) {
+    int maxSum = Integer.MIN_VALUE; // because values can be negative
+
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            int sum = arr.get(i).get(j) + arr.get(i).get(j+1) + arr.get(i).get(j+2)
+                      + arr.get(i+1).get(j+1)
+                      + arr.get(i+2).get(j) + arr.get(i+2).get(j+1) + arr.get(i+2).get(j+2);
+            if (sum > maxSum) {
+                maxSum = sum;
+            }
+        }
+    }
+    return maxSum;
+
+
+    Time Complexity
+The loop runs 4 x 4 = 16 times (because only 0-3 for both i and j).
+
+Inside each loop, sum of 7 numbers → O(1).
+
+✅ Overall Time Complexity: O(1) — fixed for 6x6 grid.
+
+✅ Space Complexity
+O(1) — only variables used for counting.
+
+
+}
