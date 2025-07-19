@@ -39,4 +39,6 @@ public static int sockMerchant(int n, List<Integer> ar) {
     
     return pairs;
 }
+tc- o(n)
+sc-o(n)
 
